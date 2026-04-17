@@ -66,8 +66,8 @@ h1, h2, h3, .display-font {
 /* Glassmorphism Utility */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
 }
 
 /* Tonal Layering Utilities (No borders!) */
@@ -139,4 +139,34 @@ h1, h2, h3, .display-font {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-md);
+}
+
+/* Animations */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* High-Efficiency Utilities */
+[loading="lazy"] {
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+
+[loading="lazy"]:not([src=""]) {
+  opacity: 1;
 }

@@ -114,20 +114,136 @@
       background: var(--primary);
       color: white;
     }
+    .sidebar-filter {
+      padding: 2rem;
+    }
+
+    .filter-section {
+      margin-bottom: 3rem;
+    }
+
+    .filter-title {
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      color: var(--outline);
+    }
+
+    .filter-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: var(--body-sm);
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+    }
+
+    .price-range-bar {
+      height: 4px;
+      background: var(--outline-variant);
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .price-range-fill {
+      position: absolute; 
+      height: 4px; 
+      background: var(--primary); 
+      width: 60%; 
+      border-radius: 2px;
+    }
+    
+    .price-handle {
+      position: absolute; 
+      width: 16px; 
+      height: 16px; 
+      background: white; 
+      border: 2px solid var(--primary); 
+      border-radius: 50%; 
+      top: -6px;
+    }
+
+    .ai-insight-small {
+      padding: 1rem; 
+      border-radius: var(--radius-md); 
+      font-size: var(--body-sm); 
+      color: var(--tertiary);
+    }
+
+    .footer-area {
+      margin-top: 8rem; 
+      padding: 4rem 0; 
+      background: var(--surface-container-low); 
+      border-top: 1px solid var(--outline-variant);
+    }
+
+    .footer-inner {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex; 
+      gap: 2rem; 
+      font-size: var(--body-sm); 
+      color: var(--outline); 
+      font-weight: 500; 
+      text-transform: uppercase;
+    }
+
+    /* Listing Page Utility Classes */
+    .listing-nav { position: sticky; top: 0; z-index: 1000; padding: 1.5rem 0; }
+    .nav-inner-list { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 1.5rem; text-decoration: none; color: var(--primary); }
+    .search-wrapper { display: flex; align-items: center; flex: 1; max-width: 600px; margin: 0 2rem; position: relative; }
+    .search-input-list { width: 100%; padding: 0.75rem 1.5rem; border-radius: var(--radius-lg); border: none; background: var(--surface-container-low); font-family: inherit; }
+    .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+    .btn-ai-nav { padding: 8px 16px; }
+    .cart-trigger-rel { cursor: pointer; position: relative; }
+    .cart-count-badge { position: absolute; top: -8px; right: -8px; background: var(--primary); color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; display: flex; align-items: center; justify-content: center; }
+    .sidebar-title { font-size: 1rem; margin-bottom: 2rem; }
+    .ai-refinement-card { padding: 1rem; border-radius: var(--radius-md); font-size: var(--body-sm); color: var(--tertiary); }
+    .ai-refinement-header { display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 0.5rem; }
+    .sidebar-btn-apply { width: 100%; margin-top: 1rem; }
+    .listing-header { margin-bottom: 3rem; }
+    .listing-title { font-size: var(--display-md); margin-bottom: 0.5rem; }
+    .listing-desc { color: var(--outline); font-size: var(--body-md); max-width: 600px; }
+    .empty-state { grid-column: 1/-1; text-align: center; padding: 5rem 2rem; }
+    .empty-title { font-size: 1.5rem; margin-bottom: 1rem; }
+    .empty-desc { color: var(--outline); }
+    .product-card-wrap { position: relative; animation: slideUp 0.6s ease forwards; }
+    .card-meta { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 4px; font-size: 12px; color: #f59e0b; }
+    .rating-count { color: var(--outline); }
+    .card-title { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .card-link { text-decoration: none; color: inherit; }
+    .card-desc { font-size: 14px; color: var(--outline); margin-bottom: 2rem; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; }
+    .footer-area-logo { font-size: 1.2rem; color: var(--on-surface); }
+    .footer-item-link { text-decoration: none; color: inherit; }
+    .footer-copy-text { font-size: var(--body-sm); color: var(--outline); }
+    .badge-ai-elite { background: var(--primary); }
+    .icon-star { width: 12px; }
+    .icon-cart-nav { width: 24px; }
+    .icon-ai-small { width: 14px; }
+    .price-handle-start { left: 0; }
+    .price-handle-end { left: 60%; }
   </style>
 </head>
 <body>
-  <nav class="glass" style="position: sticky; top: 0; z-index: 1000; padding: 1.5rem 0;">
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
-      <a href="index.html" class="display-font" style="font-size: 1.5rem; text-decoration: none; color: var(--primary);">ShopAI</a>
-      <div style="display: flex; align-items: center; flex: 1; max-width: 600px; margin: 0 2rem; position: relative;">
-        <input type="text" placeholder="Search for intelligent products..." style="width: 100%; padding: 0.75rem 1.5rem; border-radius: var(--radius-lg); border: none; background: var(--surface-container-low); font-family: inherit;">
+  <nav class="glass listing-nav">
+    <div class="container nav-inner-list">
+      <a href="index.html" class="display-font nav-logo">ShopAI</a>
+      <div class="search-wrapper">
+        <input type="text" placeholder="Search for intelligent products..." class="search-input-list" title="Search field">
       </div>
-      <div style="display: flex; align-items: center; gap: 1.5rem;">
-        <button class="btn btn-ai cart-toggle" style="padding: 8px 16px;">Ask AI</button>
-        <div class="cart-toggle" style="cursor: pointer; position: relative;">
-          <svg style="width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-          <span style="position: absolute; top: -8px; right: -8px; background: var(--primary); color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; display: flex; align-items: center; justify-content: center;">2</span>
+      <div class="nav-actions">
+        <button class="btn btn-ai cart-toggle btn-ai-nav">Ask AI</button>
+        <div class="cart-toggle cart-trigger-rel" title="Shopping Cart">
+          <svg class="icon-cart-nav" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+          <span class="cart-count-badge">2</span>
         </div>
       </div>
     </div>
@@ -137,44 +253,44 @@
     <div class="listing-layout">
       <!-- Sidebar Filters -->
       <aside class="sidebar">
-        <h3 class="display-font" style="font-size: 1rem; margin-bottom: 2rem;">Filters</h3>
+        <h3 class="display-font sidebar-title">Filters</h3>
         
         <div class="filter-section">
           <div class="filter-title">Price</div>
-          <div style="height: 4px; background: var(--outline-variant); border-radius: 2px; position: relative;">
-            <div style="position: absolute; height: 4px; background: var(--primary); width: 60%; border-radius: 2px;"></div>
-            <div style="position: absolute; width: 16px; height: 16px; background: white; border: 2px solid var(--primary); border-radius: 50%; top: -6px; left: 0;"></div>
-            <div style="position: absolute; width: 16px; height: 16px; background: white; border: 2px solid var(--primary); border-radius: 50%; top: -6px; left: 60%;"></div>
+          <div class="price-range-bar">
+            <div class="price-range-fill"></div>
+            <div class="price-handle price-handle-start"></div>
+            <div class="price-handle price-handle-end"></div>
           </div>
         </div>
 
         <div class="filter-section">
           <div class="filter-title">Category</div>
-          <div class="filter-item"><input type="checkbox" checked> Audio</div>
-          <div class="filter-item"><input type="checkbox"> Wearables</div>
-          <div class="filter-item"><input type="checkbox"> Smart Home</div>
-          <div class="filter-item"><input type="checkbox"> Photography</div>
+          <div class="filter-item"><input type="checkbox" checked title="Filter by Audio"> Audio</div>
+          <div class="filter-item"><input type="checkbox" title="Filter by Wearables"> Wearables</div>
+          <div class="filter-item"><input type="checkbox" title="Filter by Smart Home"> Smart Home</div>
+          <div class="filter-item"><input type="checkbox" title="Filter by Photography"> Photography</div>
         </div>
 
         <div class="filter-section">
           <div class="filter-title">AI Insights</div>
-          <div class="surface-lowest" style="padding: 1rem; border-radius: var(--radius-md); font-size: var(--body-sm); color: var(--tertiary);">
-            <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 0.5rem;">
-              <svg style="width: 14px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <div class="surface-lowest ai-refinement-card">
+            <div class="ai-refinement-header">
+              <svg class="icon-ai-small" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
               Smart Refinement
             </div>
             Based on your interest in "focus" and "productivity," we're highlighting items with superior noise isolation.
           </div>
         </div>
 
-        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Apply Filters</button>
+        <button class="btn btn-primary sidebar-btn-apply">Apply Filters</button>
       </aside>
 
       <!-- Main Content -->
       <section>
-        <header style="margin-bottom: 3rem;">
-          <h1 style="font-size: var(--display-md); margin-bottom: 0.5rem;">Smart Living</h1>
-          <p style="color: var(--outline); font-size: var(--body-md); max-width: 600px;">Curated electronics selected by AI based on your past preferences and current market trends.</p>
+        <header class="listing-header">
+          <h1 class="listing-title">Smart Living</h1>
+          <p class="listing-desc">Curated electronics selected by AI based on your past preferences and current market trends.</p>
         </header>
 
         <div class="product-grid" id="productGrid">
@@ -218,24 +334,24 @@
 
         if (filtered.length === 0) {
             grid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 5rem 2rem;">
-                <h2 class="display-font" style="font-size: 1.5rem; margin-bottom: 1rem;">No Intelligent Matches Found</h2>
-                <p style="color: var(--outline);">Try searching for "phones", "audio", or "wearables".</p>
+            <div class="empty-state">
+                <h2 class="display-font empty-title">No Intelligent Matches Found</h2>
+                <p class="empty-desc">Try searching for "phones", "audio", or "wearables".</p>
             </div>`;
             return;
         }
 
         grid.innerHTML = filtered.map(p => `
-            <div class="surface-lowest product-card" style="position: relative; animation: slideUp 0.6s ease forwards;">
-                ${p.badge ? `<div class="product-badge" style="${p.badge === 'AI Elite' ? 'background: var(--primary);' : ''}">${p.badge}</div>` : ''}
-                <img src="${p.image}" class="product-image">
-                <div style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 4px; font-size: 12px; color: #f59e0b;">
-                    <svg style="width: 12px;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    ${p.rating} <span style="color: var(--outline);">(${p.reviews})</span>
+            <div class="surface-lowest product-card product-card-wrap">
+                ${p.badge ? `<div class="product-badge ${p.badge === 'AI Elite' ? 'badge-ai-elite' : ''}">${p.badge}</div>` : ''}
+                <img src="${p.image}" class="product-image" alt="${p.name}">
+                <div class="card-meta">
+                    <svg class="icon-star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    ${p.rating} <span class="rating-count">(${p.reviews})</span>
                 </div>
-                <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;"><a href="details.html" style="text-decoration: none; color: inherit;">${p.name}</a></h3>
-                <p style="font-size: 14px; color: var(--outline); margin-bottom: 2rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${p.description}</p>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 class="card-title"><a href="details.html" class="card-link">${p.name}</a></h3>
+                <p class="card-desc">${p.description}</p>
+                <div class="card-footer">
                     <span class="price-tag">${p.price}</span>
                     <div class="cart-btn cart-toggle">
                         <svg style="width: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
@@ -268,19 +384,21 @@
     </div>
   </main>
 
-  <footer style="margin-top: 8rem; padding: 4rem 0; background: var(--surface-container-low); border-top: 1px solid var(--outline-variant);">
+  <footer class="footer-area">
     <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div class="display-font" style="font-size: 1.2rem; color: var(--on-surface);">ShopAI</div>
-        <div style="display: flex; gap: 2rem; font-size: var(--body-sm); color: var(--outline); font-weight: 500; text-transform: uppercase;">
-          <a href="#" style="text-decoration: none; color: inherit;">Privacy Policy</a>
-          <a href="#" style="text-decoration: none; color: inherit;">Terms of Service</a>
-          <a href="#" style="text-decoration: none; color: inherit;">AI Ethics</a>
+      <div class="footer-inner">
+        <div class="display-font footer-area-logo">ShopAI</div>
+        <div class="footer-links">
+          <a href="#" class="footer-item-link">Privacy Policy</a>
+          <a href="#" class="footer-item-link">Terms of Service</a>
+          <a href="#" class="footer-item-link">AI Ethics</a>
         </div>
-        <div style="font-size: var(--body-sm); color: var(--outline);">© 2024 SHOPAI INTELLIGENCE.</div>
+        <div class="footer-copy-text">© 2024 SHOPAI INTELLIGENCE.</div>
       </div>
     </div>
   </footer>
+  <script src="products.js"></script>
+  <script src="ai-service.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

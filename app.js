@@ -1,17 +1,17 @@
 // ShopAI Core Logic
 document.addEventListener('DOMContentLoaded', () => {
-    // Inject Cart Drawer HTML if not present
+    // Inject Cart Drawer HTML if not present (Optimized for Accessibility)
     if (!document.querySelector('.cart-drawer')) {
         const drawerHtml = `
-            <div class="cart-overlay" id="cartOverlay"></div>
-            <div class="cart-drawer" id="cartDrawer">
+            <div class="cart-overlay" id="cartOverlay" aria-hidden="true" role="presentation"></div>
+            <div class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
                 <div class="cart-header">
-                    <h2 class="display-font" style="font-size: 1.5rem;">Your Cart</h2>
-                    <button id="closeCart" style="background: none; border: none; cursor: pointer; font-size: 1.5rem;">&times;</button>
+                    <h2 id="cartTitle" class="display-font" style="font-size: 1.5rem;">Your Cart</h2>
+                    <button id="closeCart" aria-label="Close Shopping Cart" style="background: none; border: none; cursor: pointer; font-size: 1.5rem;">&times;</button>
                 </div>
                 <div class="cart-body">
                     <div class="cart-item">
-                        <img src="C:\\Users\\Lenovo\\.gemini\\antigravity\\brain\\88dbc95b-a03e-4cac-a253-ce840cc8c89f\\sonic_silence_q7_product_1776419604485.png" class="cart-item-img">
+                        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=400&auto=format&fit=crop" class="cart-item-img" alt="SonicPro Wireless Headphones" loading="lazy">
                         <div style="flex: 1;">
                             <p style="font-weight: 600; font-size: var(--body-md);">SonicPro Wireless Headphones</p>
                             <p style="font-size: 12px; color: var(--outline);">Matte Black • Noise Cancelling</p>
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     
                     <div class="cart-item">
-                        <img src="C:\\Users\\Lenovo\\.gemini\\antigravity\\brain\\88dbc95b-a03e-4cac-a253-ce840cc8c89f\\aura_smartwatch_pro_product_1776419589198.png" class="cart-item-img">
+                        <img src="https://images.unsplash.com/photo-1544117518-30dd5f7a942a?q=80&w=400&auto=format&fit=crop" class="cart-item-img" alt="Aura Smartwatch Series 5" loading="lazy">
                         <div style="flex: 1;">
                             <p style="font-weight: 600; font-size: var(--body-md);">Aura Smartwatch Series 5</p>
                             <p style="font-size: 12px; color: var(--outline);">Arctic White • 42mm</p>
@@ -102,14 +102,55 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Search functionality
+    // Security: Input Sanitizer for XSS Prevention
+    const sanitizeQuery = (str) => {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    };
+
+    // AI Reasoning Integration
+    const handleAIReasoning = async (query) => {
+        if (!query) return;
+        
+        // --- REAL AI INTEGRATION POINT ---
+        // user can set their key here: window.shopAI.setApiKey('YOUR_KEY_HERE');
+        
+        const products = window.shopProducts || [];
+        const result = await window.shopAI.getRecommendation(query, products);
+        
+        console.group('🧠 Real-Time AI Intelligence');
+        console.log('User Intent:', query);
+        console.log('AI Logic:', result.reasoning);
+        console.log('Curated Count:', result.recommendedIds.length);
+        console.groupEnd();
+
+        // Update UI with AI Scout Prompt if on listing page
+        const scoutTxt = document.querySelector('.ai-insight-small p');
+        if (scoutTxt) scoutTxt.innerText = result.scoutPrompt;
+    };
+
+    // Search functionality with optimized reasoning
     const mainSearchBtn = document.getElementById('main-search-btn');
     const mainSearchInput = document.getElementById('main-search-input');
 
     const handleSearch = (e) => {
         if (e) e.preventDefault();
-        const query = mainSearchInput ? mainSearchInput.value.trim() : '';
-        window.location.href = `listing.html?q=${encodeURIComponent(query)}`;
+        const baseQuery = mainSearchInput ? mainSearchInput.value.trim() : '';
+        const sanitized = sanitizeQuery(baseQuery);
+        
+        if (sanitized) {
+            handleAIReasoning(sanitized);
+            // Simulate a short processing delay for premium 'AI' feel
+            const btn = e.target.closest('button');
+            if (btn) btn.innerHTML = '<span class="spinner"></span> Processing...';
+            
+            setTimeout(() => {
+                window.location.href = `listing.html?q=${encodeURIComponent(sanitized)}`;
+            }, 600);
+        } else {
+            window.location.href = `listing.html`;
+        }
     };
 
     if (mainSearchBtn) mainSearchBtn.addEventListener('click', handleSearch);

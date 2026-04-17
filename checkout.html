@@ -108,14 +108,195 @@
       font-size: 12px;
       font-weight: 600;
     }
+
+    /* Form Step Indicator */
+    .step-number {
+      width: 32px; 
+      height: 32px; 
+      background: var(--primary); 
+      color: white; 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-size: 14px;
+    }
+
+    .form-row-2 {
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 1.5rem;
+    }
+
+    .form-row-3 {
+      display: grid; 
+      grid-template-columns: 1fr 1fr 1fr; 
+      gap: 1.5rem;
+    }
+
+    .summary-item {
+      display: flex; 
+      justify-content: space-between; 
+      margin-bottom: 1rem; 
+      font-size: 14px;
+    }
+
+    .summary-total {
+      display: flex; 
+      justify-content: space-between; 
+      margin-top: 2rem; 
+      border-top: 1px solid var(--outline-variant); 
+      padding-top: 1.5rem;
+    }
+
+    .btn-finish {
+      width: 100%; 
+      margin-top: 3rem; 
+      padding: 1.5rem; 
+      border-radius: 100px;
+    }
+
+    .security-note {
+      margin-top: 2rem; 
+      padding: 1rem; 
+      border-radius: var(--radius-sm); 
+      font-size: 10px; 
+      color: var(--outline);
+    }
+
+    /* Checkout Page Utility Classes */
+    .checkout-nav {
+      position: sticky; 
+      top: 0; 
+      z-index: 1000; 
+      padding: 1.5rem 0;
+    }
+    
+    .nav-inner {
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+    }
+
+    .verified-tag {
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      font-size: var(--body-sm); 
+      color: var(--outline);
+    }
+
+    .checkout-title {
+      font-size: var(--display-md); 
+      margin-bottom: 3rem;
+    }
+
+    .upi-label {
+      flex: 1;
+    }
+
+    .upi-bold {
+      font-weight: 700;
+    }
+
+    .upi-small {
+      font-size: 12px; 
+      color: var(--outline);
+    }
+
+    .upi-input-wrap {
+      margin-top: 1.5rem;
+    }
+
+    .summary-title {
+      margin-bottom: 2rem;
+    }
+
+    .cart-item-list {
+      border-bottom: 1px solid var(--surface-container-low); 
+      margin-bottom: 2rem;
+    }
+
+    .cart-item-wrap {
+      margin-bottom: 1.5rem;
+    }
+
+    .checkout-footer {
+      padding: 4rem 0; 
+      background: var(--surface-container-low); 
+      border-top: 1px solid var(--outline-variant);
+    }
+
+    .footer-inner {
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-size: 1.2rem; 
+      color: var(--on-surface); 
+      margin-bottom: 1rem;
+    }
+
+    .footer-copyright {
+      font-size: var(--body-sm); 
+      color: var(--outline);
+    }
+
+    .nav-logo {
+      font-size: 1.5rem; 
+      text-decoration: none; 
+      color: var(--primary);
+    }
+
+    .verified-icon {
+      width: 16px; 
+      color: #10b981;
+    }
+
+    .summary-label {
+      color: var(--outline);
+    }
+
+    .shipping-free {
+      color: #10b981; 
+      font-weight: 600;
+    }
+
+    .total-font {
+      font-size: 1.25rem;
+    }
+
+    .total-color {
+      color: var(--primary);
+    }
+
+    .item-thumb {
+      width: 60px; 
+      height: 60px;
+    }
+
+    .item-text-sm {
+      font-size: 12px;
+    }
+
+    .item-bold {
+      font-weight: 600;
+    }
+
+    .item-muted {
+      color: var(--outline);
+    }
+
+    /* Micro-utility for conditional states */
+    .hidden { display: none; }
   </style>
 </head>
 <body>
-  <nav class="glass" style="position: sticky; top: 0; z-index: 1000; padding: 1.5rem 0;">
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
-      <a href="index.html" class="display-font" style="font-size: 1.5rem; text-decoration: none; color: var(--primary);">ShopAI</a>
-      <div style="display: flex; align-items: center; gap: 8px; font-size: var(--body-sm); color: var(--outline);">
-        <svg style="width: 16px; color: #10b981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.9L10 1.55l7.834 3.35a1 1 0 01.666.92v6.57c0 5.091-3.321 9.344-8 10.223-4.679-.879-8-5.132-8-10.223V5.82a1 1 0 01.666-.92zM10 3.12L3.5 5.92v5.748c0 4.28 2.65 7.917 6.5 8.84 3.85-.923 6.5-4.56 6.5-8.84V5.92L10 3.12zm4.305 6.044a.8.8 0 010 1.132l-5 5a.8.8 0 01-1.132 0l-2.5-2.5a.8.8 0 111.132-1.132L9.172 14.04l4.434-4.434a.8.8 0 011.132 0z" clip-rule="evenodd"></path></svg>
+  <nav class="glass checkout-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="display-font nav-logo">ShopAI</a>
+      <div class="verified-tag">
+        <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.9L10 1.55l7.834 3.35a1 1 0 01.666.92v6.57c0 5.091-3.321 9.344-8 10.223-4.679-.879-8-5.132-8-10.223V5.82a1 1 0 01.666-.92zM10 3.12L3.5 5.92v5.748c0 4.28 2.65 7.917 6.5 8.84 3.85-.923 6.5-4.56 6.5-8.84V5.92L10 3.12zm4.305 6.044a.8.8 0 010 1.132l-5 5a.8.8 0 01-1.132 0l-2.5-2.5a.8.8 0 111.132-1.132L9.172 14.04l4.434-4.434a.8.8 0 011.132 0z" clip-rule="evenodd"></path></svg>
         AI-Verified Checkout
       </div>
     </div>
@@ -125,40 +306,40 @@
     <div class="checkout-layout">
       <!-- Left: Forms -->
       <section>
-        <h1 class="display-font" style="font-size: var(--display-md); margin-bottom: 3rem;">Secure Checkout</h1>
+        <h1 class="display-font checkout-title">Secure Checkout</h1>
         
         <!-- Shipping Information -->
         <div class="form-section">
           <div class="form-title">
-            <span style="width: 32px; height: 32px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">1</span>
+            <span class="step-number">1</span>
             Shipping Information
           </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+          <div class="form-row-2">
             <div class="input-group">
               <label>Full Name</label>
-              <input type="text" placeholder="John Doe">
+              <input type="text" placeholder="John Doe" title="Full Name">
             </div>
             <div class="input-group">
               <label>Email Address</label>
-              <input type="email" placeholder="john@example.com">
+              <input type="email" placeholder="john@example.com" title="Email Address">
             </div>
           </div>
           <div class="input-group">
             <label>Street Address</label>
-            <input type="text" placeholder="123 Smart Ave">
+            <input type="text" placeholder="123 Smart Ave" title="Street Address">
           </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
+          <div class="form-row-3">
             <div class="input-group">
               <label>City</label>
-              <input type="text" placeholder="Bangalore">
+              <input type="text" placeholder="Bangalore" title="City">
             </div>
             <div class="input-group">
               <label>State</label>
-              <input type="text" placeholder="Karnataka">
+              <input type="text" placeholder="Karnataka" title="State">
             </div>
             <div class="input-group">
               <label>PIN Code</label>
-              <input type="text" placeholder="560001">
+              <input type="text" placeholder="560001" title="PIN Code">
             </div>
           </div>
         </div>
@@ -166,48 +347,48 @@
         <!-- Payment Method -->
         <div class="form-section">
           <div class="form-title">
-            <span style="width: 32px; height: 32px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">2</span>
+            <span class="step-number">2</span>
             Payment Method
           </div>
           
           <!-- UPI -->
           <div class="payment-option active">
-            <input type="radio" name="payment" checked>
-            <div style="flex: 1;">
-              <div style="font-weight: 700;">UPI (Recommended)</div>
-              <div style="font-size: 12px; color: var(--outline);">Instant payment via any UPI app</div>
+            <input type="radio" name="payment" checked title="Select UPI Payment">
+            <div class="upi-label">
+              <div class="upi-bold">UPI (Recommended)</div>
+              <div class="upi-small">Instant payment via any UPI app</div>
               <div class="upi-grid">
                 <div class="upi-item">GPay</div>
                 <div class="upi-item">PhonePe</div>
                 <div class="upi-item">Paytm</div>
               </div>
-              <div class="input-group" style="margin-top: 1.5rem;">
+              <div class="input-group upi-input-wrap">
                 <label>Enter UPI ID</label>
-                <input type="text" placeholder="user@okaxis">
+                <input type="text" placeholder="user@okaxis" title="UPI ID">
               </div>
             </div>
           </div>
 
           <!-- Credit/Debit Card -->
           <div class="payment-option">
-            <input type="radio" name="payment">
-            <div style="flex: 1;">
-              <div style="font-weight: 700;">Credit / Debit Card</div>
-              <div style="font-size: 12px; color: var(--outline);">Visa, Mastercard, RuPay, and more</div>
+            <input type="radio" name="payment" title="Select Card Payment">
+            <div class="upi-label">
+              <div class="upi-bold">Credit / Debit Card</div>
+              <div class="upi-small">Visa, Mastercard, RuPay, and more</div>
               
-              <div style="margin-top: 1.5rem; display: none;" id="cardFields">
+              <div class="upi-input-wrap hidden" id="cardFields">
                 <div class="input-group">
                   <label>Card Number</label>
-                  <input type="text" placeholder="0000 0000 0000 0000">
+                  <input type="text" placeholder="0000 0000 0000 0000" title="Card Number">
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <div class="form-row-2">
                   <div class="input-group">
                     <label>Expiry (MM/YY)</label>
-                    <input type="text" placeholder="MM/YY">
+                    <input type="text" placeholder="MM/YY" title="Expiry Date">
                   </div>
                   <div class="input-group">
                     <label>CVV</label>
-                    <input type="text" placeholder="***">
+                    <input type="text" placeholder="***" title="CVV">
                   </div>
                 </div>
               </div>
@@ -219,43 +400,43 @@
       <!-- Right: Summary -->
       <aside class="order-summary">
         <div class="summary-card">
-          <h3 class="display-font" style="margin-bottom: 2rem;">Order Summary</h3>
+          <h3 class="display-font summary-title">Order Summary</h3>
           
-          <div style="border-bottom: 1px solid var(--surface-container-low); margin-bottom: 2rem;">
-            <div class="cart-item" style="margin-bottom: 1.5rem;">
-              <img src="C:\Users\Lenovo\.gemini\antigravity\brain\88dbc95b-a03e-4cac-a253-ce840cc8c89f\aura_sound_pro_hero_1776420031570.png" class="cart-item-img" style="width: 60px; height: 60px;">
-              <div style="font-size: 12px;">
-                <p style="font-weight: 600;">Aura Sound Pro</p>
-                <p style="color: var(--outline);">₹24,990</p>
+          <div class="cart-item-list">
+            <div class="cart-item cart-item-wrap">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400&auto=format&fit=crop" class="cart-item-img item-thumb" alt="Aura Sound Pro" loading="lazy">
+              <div class="item-text-sm">
+                <p class="item-bold">Aura Sound Pro</p>
+                <p class="item-muted">₹24,990</p>
               </div>
             </div>
-            <div class="cart-item" style="margin-bottom: 1.5rem;">
-              <img src="C:\Users\Lenovo\.gemini\antigravity\brain\88dbc95b-a03e-4cac-a253-ce840cc8c89f\aura_smartwatch_pro_product_1776419589198.png" class="cart-item-img" style="width: 60px; height: 60px;">
-              <div style="font-size: 12px;">
-                <p style="font-weight: 600;">SyncWatch Pro</p>
-                <p style="color: var(--outline);">₹12,499</p>
+            <div class="cart-item cart-item-wrap">
+              <img src="https://images.unsplash.com/photo-1544117518-30dd5f7a942a?q=80&w=400&auto=format&fit=crop" class="cart-item-img item-thumb" alt="SyncWatch Pro" loading="lazy">
+              <div class="item-text-sm">
+                <p class="item-bold">SyncWatch Pro</p>
+                <p class="item-muted">₹12,499</p>
               </div>
             </div>
           </div>
 
-          <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 14px;">
-            <span style="color: var(--outline);">Subtotal</span>
+          <div class="summary-item">
+            <span class="summary-label">Subtotal</span>
             <span>₹37,489</span>
           </div>
-          <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 14px;">
-            <span style="color: var(--outline);">Shipping</span>
-            <span style="color: #10b981; font-weight: 600;">FREE</span>
+          <div class="summary-item">
+            <span class="summary-label">Shipping</span>
+            <span class="shipping-free">FREE</span>
           </div>
-          <div style="display: flex; justify-content: space-between; margin-top: 2rem; border-top: 1px solid var(--outline-variant); padding-top: 1.5rem;">
-            <span class="display-font" style="font-size: 1.25rem;">Total</span>
-            <span class="display-font" style="font-size: 1.25rem; color: var(--primary);">₹37,489</span>
+          <div class="summary-total">
+            <span class="display-font total-font">Total</span>
+            <span class="display-font total-font total-color">₹37,489</span>
           </div>
 
-          <button class="btn btn-primary" style="width: 100%; margin-top: 3rem; padding: 1.5rem; border-radius: 100px;">
+          <button class="btn btn-primary btn-finish">
             Finish Payment &nbsp; →
           </button>
           
-          <div class="surface-low" style="margin-top: 2rem; padding: 1rem; border-radius: var(--radius-sm); font-size: 10px; color: var(--outline);">
+          <div class="surface-low security-note">
             We use a state-of-the-art AI verification layer to protect your transaction from fraud. All payments are 256-bit SSL encrypted.
           </div>
         </div>
@@ -263,10 +444,10 @@
     </div>
   </main>
 
-  <footer style="padding: 4rem 0; background: var(--surface-container-low); border-top: 1px solid var(--outline-variant);">
-    <div class="container" style="text-align: center;">
-      <div class="display-font" style="font-size: 1.2rem; color: var(--on-surface); margin-bottom: 1rem;">ShopAI</div>
-      <div style="font-size: var(--body-sm); color: var(--outline);">© 2024 SHOPAI INTELLIGENCE. ALL RIGHTS RESERVED.</div>
+  <footer class="checkout-footer">
+    <div class="container footer-inner">
+      <div class="display-font footer-logo">ShopAI</div>
+      <div class="footer-copyright">© 2024 SHOPAI INTELLIGENCE. ALL RIGHTS RESERVED.</div>
     </div>
   </footer>
 
@@ -283,9 +464,9 @@
         // Show card fields if card is selected
         const cardFields = document.getElementById('cardFields');
         if (option.innerText.includes('Card')) {
-          cardFields.style.display = 'block';
+          cardFields.classList.remove('hidden');
         } else {
-          cardFields.style.display = 'none';
+          cardFields.classList.add('hidden');
         }
       });
     });

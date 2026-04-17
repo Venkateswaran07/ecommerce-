@@ -4,75 +4,191 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ShopAI | Find exactly what you need. Instantly.</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://images.unsplash.com https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;">
+  <meta name="description" content="ShopAI - The next generation AI-powered ecommerce platform. Exclusive products curated for you.">
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="cart-drawer.css">
+  <style>
+    .nav-inner {
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+    }
+    .nav-links {
+      display: flex; 
+      gap: 1.5rem; 
+      font-weight: 500; 
+      font-size: var(--body-md);
+    }
+    .search-container {
+      display: flex; 
+      align-items: center; 
+      flex: 1; 
+      max-width: 600px; 
+      margin: 0 2rem; 
+      position: relative;
+    }
+    .search-input {
+      width: 100%; 
+      padding: 0.75rem 1.5rem; 
+      border-radius: var(--radius-lg); 
+      border: none; 
+      background: var(--surface-container-low); 
+      font-family: inherit;
+    }
+    .search-icon {
+      position: absolute; 
+      right: 1.5rem; 
+      width: 18px; 
+      color: var(--outline);
+    }
+    .hero-section {
+      min-height: 80vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      background: radial-gradient(circle at top right, rgba(0, 74, 198, 0.05), transparent);
+    }
+    .ai-search-bar {
+      max-width: 800px; 
+      margin: 3rem auto; 
+      padding: 0.5rem; 
+      border-radius: 100px; 
+      display: flex; 
+      align-items: center; 
+      box-shadow: 0 40px 100px rgba(0,0,0,0.06);
+    }
+    .footer-content {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+    .footer-links {
+      display: flex; 
+      gap: 2rem; 
+      font-size: var(--body-sm); 
+      color: var(--outline); 
+      font-weight: 500; 
+      text-transform: uppercase; 
+      letter-spacing: 0.05em;
+    }
+
+    /* Index Page Utility Classes */
+    .nav-glass { position: sticky; top: 0; z-index: 1000; padding: 1.5rem 0; }
+    .nav-left { display: flex; align-items: center; gap: 2rem; }
+    .nav-logo { font-size: 1.5rem; text-decoration: none; color: var(--primary); }
+    .nav-link-cat { text-decoration: none; color: var(--primary); }
+    .nav-link-item { text-decoration: none; color: var(--on-surface); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .btn-ask-ai { padding: 8px 16px; }
+    .icon-inline { width: 16px; height: 16px; }
+    .icon-action { width: 24px; }
+    .cart-rel { cursor: pointer; position: relative; }
+    .profile-trigger { cursor: pointer; }
+    .auth-modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 3rem; border-radius: var(--radius-lg); z-index: 2000; text-align: center; box-shadow: 0 50px 100px rgba(0,0,0,0.2); }
+    .auth-title { margin-bottom: 1.5rem; }
+    .btn-google { background: white; color: #444; border: 1px solid #ddd; width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 1rem; }
+    .google-logo { width: 20px; }
+    .auth-note { margin-top: 1.5rem; font-size: 12px; color: var(--outline); }
+    .btn-cancel { margin-top: 2rem; background: none; border: none; color: var(--primary); font-weight: 600; cursor: pointer; }
+    .hero-container { text-align: center; }
+    .hero-ai-tag { margin-bottom: 2rem; }
+    .hero-title { font-size: var(--display-lg); line-height: 1; margin-bottom: 1rem; }
+    .hero-title-accent { color: var(--primary); }
+    .search-prompt-icon { padding-left: 2rem; color: var(--tertiary); display: flex; align-items: center; }
+    .search-prompt-input { flex: 1; border: none; padding: 1.5rem; font-size: 1.1rem; background: transparent; outline: none; }
+    .btn-search-main { padding: 1.2rem 3rem; border-radius: 100px; }
+    .footer-main { padding: 4rem 0; background: var(--surface-container-low); border-top: 1px solid var(--outline-variant); }
+    .footer-brand { font-size: 1.2rem; color: var(--on-surface); }
+    .footer-item { text-decoration: none; color: inherit; }
+    .footer-copy { font-size: var(--body-sm); color: var(--outline); }
+  </style>
 </head>
 <body>
-  <nav class="glass" style="position: sticky; top: 0; z-index: 1000; padding: 1.5rem 0;">
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
-      <div style="display: flex; align-items: center; gap: 2rem;">
-        <a href="index.html" class="display-font" style="font-size: 1.5rem; text-decoration: none; color: var(--primary);">ShopAI</a>
-        <div style="display: flex; gap: 1.5rem; font-weight: 500; font-size: var(--body-md);">
-          <a href="listing.html" style="text-decoration: none; color: var(--primary);">Categories</a>
-          <a href="#" style="text-decoration: none; color: var(--on-surface);">Deals</a>
-          <a href="#" style="text-decoration: none; color: var(--on-surface);">Orders</a>
+  <nav class="glass nav-glass">
+    <div class="container nav-inner">
+      <div class="nav-left">
+        <a href="index.html" class="display-font nav-logo">ShopAI</a>
+        <div class="nav-links">
+          <a href="listing.html" class="nav-link-cat">Categories</a>
+          <a href="#" class="nav-link-item">Deals</a>
+          <a href="#" class="nav-link-item">Orders</a>
         </div>
       </div>
       
-      <div style="display: flex; align-items: center; flex: 1; max-width: 600px; margin: 0 2rem; position: relative;">
-        <input type="text" placeholder="Search ShopAI..." style="width: 100%; padding: 0.75rem 1.5rem; border-radius: var(--radius-lg); border: none; background: var(--surface-container-low); font-family: inherit;">
-        <svg style="position: absolute; right: 1.5rem; width: 18px; color: var(--outline);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      <div class="search-container">
+        <input type="text" placeholder="Search ShopAI..." class="search-input" title="Search field">
+        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
       </div>
-
-      <div style="display: flex; align-items: center; gap: 1.5rem;">
-        <button class="btn btn-primary cart-toggle" style="padding: 8px 16px;">
-          <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      <div class="nav-right">
+        <button class="btn btn-primary cart-toggle btn-ask-ai">
+          <svg class="icon-inline" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
           Ask AI
         </button>
-        <div class="cart-toggle" style="cursor: pointer; position: relative;">
-          <svg style="width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        <div class="cart-toggle cart-rel" title="Shopping Cart">
+          <svg class="icon-action" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
         </div>
-        <div style="cursor: pointer;">
-          <svg style="width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+        <div class="profile-trigger" title="User Profile" id="google-signin-btn">
+          <svg class="icon-action" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
         </div>
       </div>
     </div>
   </nav>
 
+  <!-- Google Auth Mock Modal -->
+  <div id="auth-modal" class="glass auth-modal">
+    <h3 class="display-font auth-title">Welcome to ShopAI</h3>
+    <button class="btn btn-google">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo.svg" class="google-logo" alt="Google Logo">
+      Sign in with Google
+    </button>
+    <p class="auth-note">Secure authentication via Google Identity Services</p>
+    <button onclick="document.getElementById('auth-modal').style.display='none'" class="btn-cancel">Cancel</button>
+  </div>
+
   <main>
-    <section class="hero" style="min-height: 80vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at top right, rgba(0, 74, 198, 0.05), transparent);">
-      <div class="container" style="text-align: center;">
-        <div class="ai-tag" style="margin-bottom: 2rem;">
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="ai-tag hero-ai-tag">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
           Smart Shopping powered by AI
         </div>
-        <h1 style="font-size: var(--display-lg); line-height: 1; margin-bottom: 1rem;">Find exactly what you <br> <span style="color: var(--primary);">need. Instantly.</span></h1>
+        <h1 class="hero-title">Find exactly what you <br> <span class="hero-title-accent">need. Instantly.</span></h1>
         
-        <div class="surface-lowest" style="max-width: 800px; margin: 3rem auto; padding: 0.5rem; border-radius: 100px; display: flex; align-items: center; box-shadow: 0 40px 100px rgba(0,0,0,0.06);">
-          <div style="padding-left: 2rem; color: var(--tertiary); display: flex; align-items: center;">
-            <svg style="width: 20px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        <div class="surface-lowest ai-search-bar">
+          <div class="search-prompt-icon">
+            <svg class="icon-inline" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
           </div>
-          <input id="main-search-input" type="text" placeholder="e.g., Best gaming phone under ₹20,000" style="flex: 1; border: none; padding: 1.5rem; font-size: 1.1rem; background: transparent; outline: none;">
-          <button id="main-search-btn" class="btn btn-primary" style="padding: 1.2rem 3rem; border-radius: 100px;">Search</button>
+          <input id="main-search-input" type="text" placeholder="e.g., Best gaming phone under ₹20,000" class="search-prompt-input" title="AI Prompt Input">
+          <button id="main-search-btn" class="btn btn-primary btn-search-main">Search</button>
         </div>
       </div>
     </section>
   </main>
 
-  <footer style="padding: 4rem 0; background: var(--surface-container-low); border-top: 1px solid var(--outline-variant);">
+  <footer class="footer-main">
     <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div class="display-font" style="font-size: 1.2rem; color: var(--on-surface);">ShopAI</div>
-        <div style="display: flex; gap: 2rem; font-size: var(--body-sm); color: var(--outline); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;">
-          <a href="#" style="text-decoration: none; color: inherit;">Privacy Policy</a>
-          <a href="#" style="text-decoration: none; color: inherit;">Terms of Service</a>
-          <a href="#" style="text-decoration: none; color: inherit;">AI Ethics</a>
-          <a href="#" style="text-decoration: none; color: inherit;">Contact Support</a>
+      <div class="footer-content">
+        <div class="display-font footer-brand">ShopAI</div>
+        <div class="footer-links">
+          <a href="#" class="footer-item">Privacy Policy</a>
+          <a href="#" class="footer-item">Terms of Service</a>
+          <a href="#" class="footer-item">AI Ethics</a>
+          <a href="#" class="footer-item">Contact Support</a>
         </div>
-        <div style="font-size: var(--body-sm); color: var(--outline);">© 2024 SHOPAI INTELLIGENCE. ALL RIGHTS RESERVED.</div>
+        <div class="footer-copy">© 2024 SHOPAI INTELLIGENCE. ALL RIGHTS RESERVED.</div>
       </div>
     </div>
   </footer>
+  <script src="products.js"></script>
+  <script src="ai-service.js"></script>
   <script src="app.js"></script>
+  <script src="tests.js"></script>
+  <script>
+    // Google Auth Mock Interaction
+    document.getElementById('google-signin-btn').addEventListener('click', () => {
+      document.getElementById('auth-modal').style.display = 'block';
+    });
+  </script>
 </body>
 </html>
