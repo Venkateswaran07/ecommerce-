@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopping Cart &amp; AI Insights - ShopAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary-container": "#ffece5",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-tint": "#0053db",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "background": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "surface": "#f7f9fb",
+                        "secondary": "#545f73",
+                        "on-surface": "#191c1e",
+                        "on-secondary-container": "#586377",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary-fixed": "#341100",
+                        "on-primary-container": "#eeefff",
+                        "surface-dim": "#d8dadc",
+                        "secondary-container": "#d5e0f8",
+                        "on-surface-variant": "#434655",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "inverse-surface": "#2d3133",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#d8e3fb",
+                        "outline-variant": "#c3c6d7",
+                        "secondary-fixed-dim": "#bcc7de",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed": "#ffdbca",
+                        "outline": "#737686",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-container": "#2563eb",
+                        "tertiary": "#8e3c00",
+                        "primary": "#004ac6",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary-container": "#b54e00",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#111c2d"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen relative overflow-x-hidden">
+<!-- TopNavBar (Shared Component) - Rendered for context, but focus is on the slide-in -->
+<nav class="fixed top-0 w-full z-40 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md shadow-xl shadow-slate-200/50 dark:shadow-none flex justify-between items-center px-6 py-3 w-full max-w-full mx-auto">
+<div class="text-2xl font-black text-blue-700 dark:text-blue-400 tracking-tighter font-headline">ShopAI</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 font-headline font-bold tracking-tight active:scale-95 transition-transform hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 px-2 py-1 rounded" href="#">Categories</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 font-headline font-bold tracking-tight active:scale-95 transition-transform hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 px-2 py-1 rounded" href="#">Deals</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 font-headline font-bold tracking-tight active:scale-95 transition-transform hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 px-2 py-1 rounded" href="#">Orders</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 bg-tertiary text-on-tertiary px-4 py-2 rounded-xl font-headline font-bold text-sm tracking-tight active:scale-95 transition-transform shadow-[0_0_15px_rgba(142,60,0,0.3)]">
+                Ask AI
+            </button>
+<div class="flex gap-3">
+<button class="text-blue-700 dark:text-blue-400 active:scale-95 transition-transform"><span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span></button>
+<button class="text-slate-600 dark:text-slate-400 hover:text-blue-600 active:scale-95 transition-transform"><span class="material-symbols-outlined" data-icon="account_circle">account_circle</span></button>
+</div>
+</div>
+</nav>
+<!-- Main Content Area (Background) -->
+<main class="pt-24 px-6 md:px-12 max-w-7xl mx-auto opacity-40 transition-opacity duration-300">
+<!-- Placeholder content to give context to the slide-over -->
+<h1 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface mb-8 tracking-tight">Your Curated Collection</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest rounded-lg h-64 shadow-[0_4px_20px_rgba(25,28,30,0.05)]"></div>
+<div class="bg-surface-container-lowest rounded-lg h-64 shadow-[0_4px_20px_rgba(25,28,30,0.05)]"></div>
+<div class="bg-surface-container-lowest rounded-lg h-64 shadow-[0_4px_20px_rgba(25,28,30,0.05)]"></div>
+</div>
+</main>
+<!-- Slide-in Cart Panel Overlay -->
+<div class="fixed inset-0 bg-on-surface/20 z-50 backdrop-blur-sm transition-opacity"></div>
+<!-- Slide-in Cart Panel -->
+<div class="fixed inset-y-0 right-0 z-50 w-full md:w-[480px] bg-surface-container-lowest shadow-[-10px_0_30px_rgba(25,28,30,0.08)] flex flex-col transform transition-transform duration-300 translate-x-0 overflow-y-auto">
+<!-- Cart Header -->
+<div class="px-6 py-6 flex justify-between items-center bg-surface-container-lowest sticky top-0 z-10">
+<h2 class="font-headline text-2xl font-bold text-on-surface tracking-tight">Your Cart</h2>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Cart Items List -->
+<div class="flex-1 px-6 py-4 flex flex-col gap-6">
+<!-- Item 1 -->
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-lg bg-surface-container-low overflow-hidden shrink-0 relative">
+<img alt="Premium wireless headphones" class="w-full h-full object-cover" data-alt="sleek black premium over-ear wireless headphones resting on a clean minimalist light grey surface with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHMb6lxF6Gtd_NVoXzWvrOZ5v_kBGRTw8vK-flmsbkCzkKqDT0i9EQcAriIT9Ro6WbOTRTT5y-lv9E_6fnH4o0hKyEtaRZZKx_34rt9PLq7N6M88qcyaXicYe_5RpqlG9Jw7piBE_opFsrlVjqufThmRoYtdg7E26eqCmDPbOsHi6ARb-N8BRSihe0vCyN0oSS3bSDA0K0rLWHIJcHe3j0Zed3dbIqKh_KDAxwmdQtOGRiu7fdIUXZxyNNqXrZWuBoiyO8qGZZAs0"/>
+</div>
+<div class="flex flex-col flex-1 justify-between">
+<div>
+<h3 class="font-headline text-base font-bold text-on-surface leading-tight">SonicPro Wireless Headphones</h3>
+<p class="font-body text-sm text-on-surface-variant mt-1">Matte Black • Noise Cancelling</p>
+</div>
+<div class="flex justify-between items-center mt-2">
+<div class="flex items-center gap-3 bg-surface-container-low rounded-lg px-2 py-1">
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-sm" data-icon="remove">remove</span></button>
+<span class="font-body text-sm font-semibold w-4 text-center">1</span>
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-sm" data-icon="add">add</span></button>
+</div>
+<span class="font-headline font-bold text-lg text-primary">$249.00</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-lg bg-surface-container-low overflow-hidden shrink-0 relative">
+<img alt="Smartwatch" class="w-full h-full object-cover" data-alt="modern smartwatch with a white band and dark digital face showing fitness metrics, angled slightly on a crisp white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYHg6cb6AetaeTR5mr6d1Enk0wmc3cjAA0Z5ag3iofmjLG2vZWBtXcwBTH730mmr8smhORzmWYHDcGa_1h2wYvqpOrotjRFzK3F4cVWEzo8Oo_e7djAUdCqY8LHEtuRq1lN4I0bhJVfUSbLBOGCzXV6Dn743RPpnZUcjlLJXgGmf8N1bqeOM1ioRcvrTa8cAOlL-LfvC6KQwL5apWoKb9XnoOxb5VL4AMub6ybdXj6_sDsYxnTW_-t0Eh2Xm9tSHoyLFoqG3Kg5To"/>
+</div>
+<div class="flex flex-col flex-1 justify-between">
+<div>
+<h3 class="font-headline text-base font-bold text-on-surface leading-tight">Aura Smartwatch Series 5</h3>
+<p class="font-body text-sm text-on-surface-variant mt-1">Arctic White • 42mm</p>
+</div>
+<div class="flex justify-between items-center mt-2">
+<div class="flex items-center gap-3 bg-surface-container-low rounded-lg px-2 py-1">
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-sm" data-icon="remove">remove</span></button>
+<span class="font-body text-sm font-semibold w-4 text-center">1</span>
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-sm" data-icon="add">add</span></button>
+</div>
+<span class="font-headline font-bold text-lg text-primary">$199.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Insights Section -->
+<div class="px-6 py-6 bg-tertiary-container/10 mt-4 relative">
+<!-- Decorative AI Badge -->
+<div class="absolute -top-3 left-6 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full border-[0.5px] border-tertiary flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-body text-xs font-semibold uppercase tracking-wider">AI Insight</span>
+</div>
+<h4 class="font-headline text-lg font-bold text-on-surface mt-2 mb-3">Why this combination?</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                Based on your recent focus on <strong>productivity and fitness</strong>, the SonicPro headphones will provide the deep focus you need for work, while the Aura Smartwatch seamlessly tracks your afternoon runs. Buying them together saves you 15% on shipping.
+            </p>
+</div>
+<!-- Order Summary & Checkout -->
+<div class="p-6 bg-surface-container-lowest mt-auto shadow-[0_-4px_20px_rgba(25,28,30,0.03)] z-10 sticky bottom-0">
+<div class="flex justify-between items-center mb-2">
+<span class="font-body text-sm text-on-surface-variant">Subtotal</span>
+<span class="font-headline text-base font-semibold text-on-surface">$448.00</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="font-body text-sm text-on-surface-variant">Estimated Shipping</span>
+<span class="font-headline text-base font-semibold text-on-surface">Calculated at checkout</span>
+</div>
+<div class="flex justify-between items-center mb-6 pt-4 border-t border-surface-container-high">
+<span class="font-headline text-lg font-bold text-on-surface">Total</span>
+<span class="font-headline text-2xl font-extrabold text-primary">$448.00</span>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-on-primary py-4 rounded-xl font-headline font-bold text-lg tracking-tight shadow-md transition-colors flex justify-center items-center gap-2">
+                Proceed to Checkout
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center font-body text-xs text-on-surface-variant mt-4">Secure, AI-verified transaction.</p>
+</div>
+</div>
+</body></html>

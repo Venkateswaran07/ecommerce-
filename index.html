@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopAI | Find exactly what you need. Instantly.</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="cart-drawer.css">
+</head>
+<body>
+  <nav class="glass" style="position: sticky; top: 0; z-index: 1000; padding: 1.5rem 0;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 2rem;">
+        <a href="index.html" class="display-font" style="font-size: 1.5rem; text-decoration: none; color: var(--primary);">ShopAI</a>
+        <div style="display: flex; gap: 1.5rem; font-weight: 500; font-size: var(--body-md);">
+          <a href="listing.html" style="text-decoration: none; color: var(--primary);">Categories</a>
+          <a href="#" style="text-decoration: none; color: var(--on-surface);">Deals</a>
+          <a href="#" style="text-decoration: none; color: var(--on-surface);">Orders</a>
+        </div>
+      </div>
+      
+      <div style="display: flex; align-items: center; flex: 1; max-width: 600px; margin: 0 2rem; position: relative;">
+        <input type="text" placeholder="Search ShopAI..." style="width: 100%; padding: 0.75rem 1.5rem; border-radius: var(--radius-lg); border: none; background: var(--surface-container-low); font-family: inherit;">
+        <svg style="position: absolute; right: 1.5rem; width: 18px; color: var(--outline);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <button class="btn btn-primary cart-toggle" style="padding: 8px 16px;">
+          <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          Ask AI
+        </button>
+        <div class="cart-toggle" style="cursor: pointer; position: relative;">
+          <svg style="width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        </div>
+        <div style="cursor: pointer;">
+          <svg style="width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" style="min-height: 80vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at top right, rgba(0, 74, 198, 0.05), transparent);">
+      <div class="container" style="text-align: center;">
+        <div class="ai-tag" style="margin-bottom: 2rem;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          Smart Shopping powered by AI
+        </div>
+        <h1 style="font-size: var(--display-lg); line-height: 1; margin-bottom: 1rem;">Find exactly what you <br> <span style="color: var(--primary);">need. Instantly.</span></h1>
+        
+        <div class="surface-lowest" style="max-width: 800px; margin: 3rem auto; padding: 0.5rem; border-radius: 100px; display: flex; align-items: center; box-shadow: 0 40px 100px rgba(0,0,0,0.06);">
+          <div style="padding-left: 2rem; color: var(--tertiary); display: flex; align-items: center;">
+            <svg style="width: 20px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          </div>
+          <input id="main-search-input" type="text" placeholder="e.g., Best gaming phone under ₹20,000" style="flex: 1; border: none; padding: 1.5rem; font-size: 1.1rem; background: transparent; outline: none;">
+          <button id="main-search-btn" class="btn btn-primary" style="padding: 1.2rem 3rem; border-radius: 100px;">Search</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="padding: 4rem 0; background: var(--surface-container-low); border-top: 1px solid var(--outline-variant);">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="display-font" style="font-size: 1.2rem; color: var(--on-surface);">ShopAI</div>
+        <div style="display: flex; gap: 2rem; font-size: var(--body-sm); color: var(--outline); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;">
+          <a href="#" style="text-decoration: none; color: inherit;">Privacy Policy</a>
+          <a href="#" style="text-decoration: none; color: inherit;">Terms of Service</a>
+          <a href="#" style="text-decoration: none; color: inherit;">AI Ethics</a>
+          <a href="#" style="text-decoration: none; color: inherit;">Contact Support</a>
+        </div>
+        <div style="font-size: var(--body-sm); color: var(--outline);">© 2024 SHOPAI INTELLIGENCE. ALL RIGHTS RESERVED.</div>
+      </div>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

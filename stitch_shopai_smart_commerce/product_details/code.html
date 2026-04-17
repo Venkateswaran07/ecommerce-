@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShopAI - Product Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#3c475a",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-primary-fixed": "#00174b",
+                      "on-tertiary-container": "#ffece5",
+                      "on-primary": "#ffffff",
+                      "inverse-primary": "#b4c5ff",
+                      "surface-tint": "#0053db",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "background": "#f7f9fb",
+                      "on-background": "#191c1e",
+                      "surface": "#f7f9fb",
+                      "secondary": "#545f73",
+                      "on-surface": "#191c1e",
+                      "on-secondary-container": "#586377",
+                      "surface-container-high": "#e6e8ea",
+                      "on-tertiary-fixed": "#341100",
+                      "on-primary-container": "#eeefff",
+                      "surface-dim": "#d8dadc",
+                      "secondary-container": "#d5e0f8",
+                      "on-surface-variant": "#434655",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "surface-bright": "#f7f9fb",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb690",
+                      "inverse-surface": "#2d3133",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#d8e3fb",
+                      "outline-variant": "#c3c6d7",
+                      "secondary-fixed-dim": "#bcc7de",
+                      "surface-variant": "#e0e3e5",
+                      "tertiary-fixed": "#ffdbca",
+                      "outline": "#737686",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-secondary": "#ffffff",
+                      "surface-container-low": "#f2f4f6",
+                      "primary-container": "#2563eb",
+                      "tertiary": "#8e3c00",
+                      "primary": "#004ac6",
+                      "on-tertiary-fixed-variant": "#783200",
+                      "primary-fixed": "#dbe1ff",
+                      "tertiary-container": "#b54e00",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#111c2d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Manrope"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "label": [
+                              "Inter"
+                      ]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-glow {
+            box-shadow: 0 0 40px -10px theme('colors.tertiary-fixed-dim');
+        }
+      </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased">
+<!-- Shared Component: TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md bg-slate-100 dark:bg-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none flex justify-between items-center px-6 py-3 max-w-full mx-auto">
+<div class="flex items-center gap-8">
+<div class="text-2xl font-black text-blue-700 dark:text-blue-400 tracking-tighter">ShopAI</div>
+<nav class="hidden md:flex gap-6 font-['Manrope'] font-bold tracking-tight">
+<!-- All inactive as this is a specific destination page -->
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 px-3 py-1 rounded-lg" href="#">Categories</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 px-3 py-1 rounded-lg" href="#">Deals</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 px-3 py-1 rounded-lg" href="#">Orders</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-2 bg-[#8e3c00] text-white px-4 py-2 rounded-xl font-bold tracking-tight active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+                Ask AI
+            </button>
+<div class="flex gap-3 text-blue-700 dark:text-blue-400">
+<button class="hover:bg-slate-50 dark:hover:bg-slate-800 p-2 rounded-full transition-colors duration-200 active:scale-95"><span class="material-symbols-outlined">shopping_cart</span></button>
+<button class="hover:bg-slate-50 dark:hover:bg-slate-800 p-2 rounded-full transition-colors duration-200 active:scale-95"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+</div>
+</header>
+<main class="pt-28 pb-20 px-6 md:px-12 max-w-[1440px] mx-auto">
+<!-- Breadcrumbs & High-Level Context -->
+<div class="flex items-center gap-2 text-sm text-on-surface-variant font-medium mb-8">
+<a class="hover:text-primary transition-colors" href="#">Tech</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Audio</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface">Premium Headphones</span>
+</div>
+<!-- Primary Product Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+<!-- Asymmetric Image Gallery (Bento Style) -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="w-full h-[500px] md:h-[650px] bg-surface-container-low rounded-xl overflow-hidden relative group">
+<img alt="High-end over-ear headphones floating against a clean studio background" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Sleek matte black over-ear premium wireless headphones positioned elegantly on a minimalist geometric pedestal with soft, diffused studio lighting and subtle metallic highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8Wm24LesfExDe5EAUIe7Db4WCnkWWMK5cSWPci9SlupgQ9llHQBP6Gx6w8AH8lUFOSqc-tZ1IDyY748T5EWkfonaVD5TYliJ0uqHjIKOixkqrFK1cUsIV4maPFlc9AuTjTNL_VXPDAkBJpfEkTDb7-0T7kvsONuAbwrnC_gTbc5YBXeXtwfmORLKZSWX70uXrKu2gWLrAhuqyoyqElyjupmodVg2Kka3ur8a3VPSVlqvg6N95UX4oilCetGkKqqopwKuRJEz_COI"/>
+<!-- Glassmorphism Quick View Badge -->
+<div class="absolute bottom-6 right-6 bg-surface/70 backdrop-blur-[20px] px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 text-on-surface shadow-[0_8px_30px_rgb(25,28,30,0.08)]">
+<span class="material-symbols-outlined text-[18px]">zoom_in</span> View 3D Model
+                    </div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-48 md:h-64 bg-surface-container-low rounded-xl overflow-hidden">
+<img alt="Detail shot of headphone ear cup texture" class="w-full h-full object-cover" data-alt="Extreme close-up macro shot of premium perforated leather earpads on luxury headphones, showcasing detailed stitching and soft textured materials under bright directional light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpOlQM40k2_yOl4IY397Ly6Equh8_xEFOr-ysWhURBxZ293SdXdk0OgVnVniO6ZI-GJ94W8KTc3mo6P7aW24MjoNANK-iJGFlzYWmzGxXGmj8yaUxuD-EdwKf7lboBYuuMa6m2GDNkOSEnYjcOSHmcWqNsViFClBRBONKpg1jhbJUbvcts2IoE1Sg5y1pwky4m-DXEiNjzsV_HkYxDR5gc_KbGp1jhpbg876pBvw3I-j7SArnfiawEZxRR6bXm-wMkoJ0c3SPuRXo"/>
+</div>
+<div class="h-48 md:h-64 bg-surface-container-low rounded-xl overflow-hidden relative">
+<img alt="Headphones folded compactly" class="w-full h-full object-cover" data-alt="Top-down view of black wireless headphones folded neatly into a molded protective carrying case resting on a dark slate surface, professional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzu-OPfjVK5Z8DzXh9g8RGCtQW9R6X1EJAYhy5ZqXvURU_HCNb7z8NzC0Uzjjp5TzJskWFdlXf8BqNXcee-1MtJrvhyUVmyQChs7EuumsdirzDUgbwrP0sKmiTmyoZG9XaiTLJ5okAic5nb6ODA2CT0bfcQwnNOxd5In8UlOMjch95e3eJNfbXbOGLYCdenCTl74aaIU1dh6nsju9zUyriKRlfuu5N-sp-xgiBx8A_Km5R5KBZjGMoQZ6us8ChOANY6jsXru_JzIs"/>
+</div>
+</div>
+</div>
+<!-- Product Details & Intelligence Canvas -->
+<div class="lg:col-span-5 flex flex-col pt-4">
+<h1 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight leading-tight mb-4">
+                    Aura Sound Pro <br/><span class="text-on-surface-variant font-semibold text-3xl">Active Noise Cancelling</span>
+</h1>
+<div class="flex items-baseline gap-4 mb-8">
+<span class="font-headline text-3xl font-extrabold text-primary">$349.00</span>
+<span class="text-sm font-medium text-on-surface-variant line-through">$399.00</span>
+</div>
+<!-- AI Summary Card (The Predictive Curator focus) -->
+<div class="bg-tertiary-container rounded-xl p-6 mb-10 relative overflow-hidden ai-glow border border-tertiary/20">
+<div class="absolute top-0 right-0 w-32 h-32 bg-tertiary opacity-10 rounded-full blur-2xl -mr-10 -mt-10"></div>
+<div class="flex items-center gap-3 mb-4 relative z-10">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="font-headline font-bold text-lg text-on-tertiary-container">Why this is a perfect match</h3>
+</div>
+<p class="text-sm text-on-tertiary-container/90 mb-4 font-medium relative z-10">Based on your recent searches for "long battery life" and "travel essentials", ShopAI highlights:</p>
+<ul class="space-y-3 relative z-10">
+<li class="flex items-start gap-3 text-sm text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px] text-tertiary mt-0.5">battery_charging_full</span>
+<span><strong>Exceptional Battery:</strong> 40 hours of continuous playback with ANC enabled outlasts comparable models.</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px] text-tertiary mt-0.5">flight_takeoff</span>
+<span><strong>Travel Ready:</strong> Adapts noise cancellation dynamically to airplane engine frequencies.</span>
+</li>
+</ul>
+</div>
+<!-- Configuration Options -->
+<div class="mb-10">
+<h4 class="font-headline font-semibold text-sm text-on-surface mb-3 uppercase tracking-wider">Color: <span class="text-primary ml-1">Matte Obsidian</span></h4>
+<div class="flex gap-3">
+<button class="w-12 h-12 rounded-full bg-[#222222] border-2 border-primary ring-2 ring-transparent ring-offset-2 ring-offset-surface transition-all"></button>
+<button class="w-12 h-12 rounded-full bg-[#e0e0e0] border-2 border-transparent hover:border-outline-variant transition-all"></button>
+<button class="w-12 h-12 rounded-full bg-[#1a365d] border-2 border-transparent hover:border-outline-variant transition-all"></button>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-5 rounded-xl font-headline font-bold text-lg shadow-[0_8px_30px_rgb(0,74,198,0.2)] hover:shadow-[0_8px_30px_rgb(0,74,198,0.3)] transition-all active:scale-[0.98] flex justify-center items-center gap-3">
+                    Add to Cart
+                    <span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<div class="flex justify-center gap-6 mt-6 text-sm text-on-surface-variant font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">local_shipping</span> Free Delivery</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">verified</span> 2-Year Warranty</span>
+</div>
+</div>
+</div>
+<!-- Technical Specifications (Tonal Layering) -->
+<div class="mt-24">
+<h2 class="font-headline text-3xl font-extrabold text-on-surface mb-8">Technical Specifications</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col gap-1">
+<span class="text-sm font-medium text-on-surface-variant">Acoustic Architecture</span>
+<span class="font-headline font-bold text-lg text-on-surface">Closed-back, Custom 40mm Drivers</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col gap-1">
+<span class="text-sm font-medium text-on-surface-variant">Noise Cancellation</span>
+<span class="font-headline font-bold text-lg text-on-surface">Adaptive Dual-Microphone ANC</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col gap-1">
+<span class="text-sm font-medium text-on-surface-variant">Connectivity</span>
+<span class="font-headline font-bold text-lg text-on-surface">Bluetooth 5.3, Multipoint Connection</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col gap-1">
+<span class="text-sm font-medium text-on-surface-variant">Weight</span>
+<span class="font-headline font-bold text-lg text-on-surface">254 grams (Ultra-lightweight)</span>
+</div>
+</div>
+</div>
+<!-- Related Products Grid -->
+<div class="mt-24 mb-12">
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-headline text-3xl font-extrabold text-on-surface">Complete Your Setup</h2>
+<button class="text-primary font-semibold hover:text-primary-container transition-colors flex items-center gap-1">View all <span class="material-symbols-outlined text-[18px]">arrow_forward</span></button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<!-- Product Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_8px_30px_rgb(25,28,30,0.04)] group cursor-pointer flex flex-col h-full">
+<div class="h-48 w-full bg-surface-container rounded-lg mb-4 overflow-hidden">
+<img alt="Premium headphone stand" class="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist solid walnut wood and matte aluminum headphone stand sitting on a clean white desk top under soft natural window light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0sAPS0Vh3SC2pfq3TxYsbXFAPOEcSpZ0cHWRu4KT0uhDjrlhaeTJoAviR9VfcyNpR9QhmAPugneaN3mq2XOUyg6B2a8CoVi_VLTDi9P7VNLzs_7P3czy2DuoO6yWAXPFL8JVMH_Q3bJZan9FHx8JG9TNw4nXhJU1eJiumYbqe-7g5801dC3MckC80_ct-kuH4WkAhyHA3JuyXUCJk4tyYPU56E7WLT9jcS1lrbbYRNGVVYs-J4DzcOsw_hJtB2K8ckW8uLpSi4eo"/>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="text-xs font-bold tracking-wider text-on-surface-variant uppercase mb-1">Accessories</span>
+<h3 class="font-headline font-bold text-on-surface text-lg mb-2">Walnut Display Stand</h3>
+<div class="mt-auto flex justify-between items-center">
+<span class="font-headline font-extrabold text-primary">$49.00</span>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface group-hover:bg-primary group-hover:text-on-primary transition-colors"><span class="material-symbols-outlined text-[18px]">add</span></button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_8px_30px_rgb(25,28,30,0.04)] group cursor-pointer flex flex-col h-full relative">
+<!-- AI Badge -->
+<div class="absolute top-6 left-6 z-10 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full border-[0.5px] border-tertiary flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[12px]">auto_awesome</span> Highly Rated
+                    </div>
+<div class="h-48 w-full bg-surface-container rounded-lg mb-4 overflow-hidden">
+<img alt="Braided audio cable" class="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500" data-alt="Coiled premium braided nylon auxiliary audio cable with gold-plated connectors resting flat on a light grey studio background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnOLvqbqwoye701PFrhWbePGQPfiPby3MrWpS8nBL8NYOjxhnQi5K7BIv64OhfUR3qu3uWSNgsukSN59TeoYjFR498NJzJCYZEjitFpGN-eQVg_KEEFJwIwm9lF60Zk3JaS5XwUh1noCQOwUn6VT_2LmEi-qA7J0ZhA-hnrOHe3ofGNsxA57FZ6bf8uhb9JJAHDy0CQzk-vcTg8o7YmyMmhCyhlQsIVTuSV0a2W24d_sPgDYtPq9Q5P8geP0pgK3VSl0en5JTmxf4"/>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="text-xs font-bold tracking-wider text-on-surface-variant uppercase mb-1">Cables</span>
+<h3 class="font-headline font-bold text-on-surface text-lg mb-2">Audiophile Aux Cable</h3>
+<div class="mt-auto flex justify-between items-center">
+<span class="font-headline font-extrabold text-primary">$24.00</span>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface group-hover:bg-primary group-hover:text-on-primary transition-colors"><span class="material-symbols-outlined text-[18px]">add</span></button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_8px_30px_rgb(25,28,30,0.04)] group cursor-pointer flex flex-col h-full">
+<div class="h-48 w-full bg-surface-container rounded-lg mb-4 overflow-hidden">
+<img alt="Wireless charging pad" class="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500" data-alt="Sleek circular wireless charging pad with a soft fabric surface texture sitting on a dark wooden table top." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQKlitZ7c3A-_ydjs9mopBP-jDUwhFHkeWpe0t95cWqjLXjOd25EXjeFmMfFdIJc4u9p7hK7cJk0jJ4wbz384qsZWQmJ7-8ovkET_DhfknH22UYjENtTXkBrS5RR9V-hS-rdXGNre3XiA1sRNufTr5eFpfUg3IdGar3Z_fJsMNirp-I-w0jQHNUoBBP0AnnCmdf-8BBulR3Gz2U8jIDwck_q8pJpd855BgWCTDEvQOltacwjdJlXA0sTTdFyh6BxPYGoEH8qBBOiQ"/>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="text-xs font-bold tracking-wider text-on-surface-variant uppercase mb-1">Power</span>
+<h3 class="font-headline font-bold text-on-surface text-lg mb-2">Qi Fast Charge Base</h3>
+<div class="mt-auto flex justify-between items-center">
+<span class="font-headline font-extrabold text-primary">$35.00</span>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface group-hover:bg-primary group-hover:text-on-primary transition-colors"><span class="material-symbols-outlined text-[18px]">add</span></button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_8px_30px_rgb(25,28,30,0.04)] group cursor-pointer flex flex-col h-full hidden lg:flex">
+<div class="h-48 w-full bg-surface-container rounded-lg mb-4 overflow-hidden">
+<img alt="Smartwatch" class="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500" data-alt="Modern digital smartwatch with a dark metallic bezel and black silicone strap displayed isolated on a clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDes0iVmGg7rnc36abQ_E-lyzpIlQiu8Bd0W4_vC92g1x7dzdSkG3ZNxyKWz-DjOh7ncUSRdcgJjegYPi1vjjYi905sEiRY-gJC8koXDQ2Uhr4kGDx_7gD2y-6D1iLvYR8hW65vJF0dByCbzzFqKoH9COsOn8AboBNnvsTTZyXiKJNn0cr1Z7mAsuae1Y_4mM5SVFEMCzRqo5GsBXM3OvIlYwAzhCyrG9Vf4Z3NC3Vo0prQxKHX2e_nG7NfDkIDUlrj2sPPKlyOi1w"/>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="text-xs font-bold tracking-wider text-on-surface-variant uppercase mb-1">Wearables</span>
+<h3 class="font-headline font-bold text-on-surface text-lg mb-2">SyncWatch Pro</h3>
+<div class="mt-auto flex justify-between items-center">
+<span class="font-headline font-extrabold text-primary">$199.00</span>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface group-hover:bg-primary group-hover:text-on-primary transition-colors"><span class="material-symbols-outlined text-[18px]">add</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Shared Component: Footer -->
+<footer class="bg-slate-100 dark:bg-slate-950 w-full border-t-0 mt-20 flex flex-col md:flex-row justify-between items-center px-12 py-10">
+<div class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6 md:mb-0">ShopAI</div>
+<div class="flex flex-wrap justify-center gap-6 font-['Inter'] text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500">
+<a class="hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">AI Ethics</a>
+<a class="hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Contact Support</a>
+</div>
+<div class="mt-6 md:mt-0 font-['Inter'] text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500">
+            © 2024 ShopAI Intelligence. All rights reserved.
+        </div>
+</footer>
+</body></html>

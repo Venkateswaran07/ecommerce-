@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopAI | Secure Checkout</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="cart-drawer.css">
+  <style>
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 4rem;
+      margin-top: 4rem;
+      margin-bottom: 8rem;
+    }
+
+    .form-section {
+      background: var(--surface-container-low);
+      padding: 3rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 2rem;
+    }
+
+    .form-title {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: var(--on-surface);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-size: var(--body-sm);
+      color: var(--outline);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    input[type="text"], input[type="email"], select {
+      width: 100%;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--outline-variant);
+      background: white;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+    }
+
+    .payment-option {
+      border: 2px solid var(--outline-variant);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .payment-option.active {
+      border-color: var(--primary);
+      background: #f0f4ff;
+    }
+
+    .payment-option input[type="radio"] {
+      width: 20px;
+      height: 20px;
+    }
+
+    .order-summary {
+      position: sticky;
+      top: 6rem;
+      height: fit-content;
+    }
+
+    .summary-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.05);
+    }
+
+    .upi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .upi-item {
+      padding: 1rem;
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-sm);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <nav class="glass" style="position: sticky; top: 0; z-index: 1000; padding: 1.5rem 0;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+      <a href="index.html" class="display-font" style="font-size: 1.5rem; text-decoration: none; color: var(--primary);">ShopAI</a>
+      <div style="display: flex; align-items: center; gap: 8px; font-size: var(--body-sm); color: var(--outline);">
+        <svg style="width: 16px; color: #10b981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.9L10 1.55l7.834 3.35a1 1 0 01.666.92v6.57c0 5.091-3.321 9.344-8 10.223-4.679-.879-8-5.132-8-10.223V5.82a1 1 0 01.666-.92zM10 3.12L3.5 5.92v5.748c0 4.28 2.65 7.917 6.5 8.84 3.85-.923 6.5-4.56 6.5-8.84V5.92L10 3.12zm4.305 6.044a.8.8 0 010 1.132l-5 5a.8.8 0 01-1.132 0l-2.5-2.5a.8.8 0 111.132-1.132L9.172 14.04l4.434-4.434a.8.8 0 011.132 0z" clip-rule="evenodd"></path></svg>
+        AI-Verified Checkout
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="checkout-layout">
+      <!-- Left: Forms -->
+      <section>
+        <h1 class="display-font" style="font-size: var(--display-md); margin-bottom: 3rem;">Secure Checkout</h1>
+        
+        <!-- Shipping Information -->
+        <div class="form-section">
+          <div class="form-title">
+            <span style="width: 32px; height: 32px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">1</span>
+            Shipping Information
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="input-group">
+              <label>Full Name</label>
+              <input type="text" placeholder="John Doe">
+            </div>
+            <div class="input-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="john@example.com">
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Street Address</label>
+            <input type="text" placeholder="123 Smart Ave">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
+            <div class="input-group">
+              <label>City</label>
+              <input type="text" placeholder="Bangalore">
+            </div>
+            <div class="input-group">
+              <label>State</label>
+              <input type="text" placeholder="Karnataka">
+            </div>
+            <div class="input-group">
+              <label>PIN Code</label>
+              <input type="text" placeholder="560001">
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="form-section">
+          <div class="form-title">
+            <span style="width: 32px; height: 32px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">2</span>
+            Payment Method
+          </div>
+          
+          <!-- UPI -->
+          <div class="payment-option active">
+            <input type="radio" name="payment" checked>
+            <div style="flex: 1;">
+              <div style="font-weight: 700;">UPI (Recommended)</div>
+              <div style="font-size: 12px; color: var(--outline);">Instant payment via any UPI app</div>
+              <div class="upi-grid">
+                <div class="upi-item">GPay</div>
+                <div class="upi-item">PhonePe</div>
+                <div class="upi-item">Paytm</div>
+              </div>
+              <div class="input-group" style="margin-top: 1.5rem;">
+                <label>Enter UPI ID</label>
+                <input type="text" placeholder="user@okaxis">
+              </div>
+            </div>
+          </div>
+
+          <!-- Credit/Debit Card -->
+          <div class="payment-option">
+            <input type="radio" name="payment">
+            <div style="flex: 1;">
+              <div style="font-weight: 700;">Credit / Debit Card</div>
+              <div style="font-size: 12px; color: var(--outline);">Visa, Mastercard, RuPay, and more</div>
+              
+              <div style="margin-top: 1.5rem; display: none;" id="cardFields">
+                <div class="input-group">
+                  <label>Card Number</label>
+                  <input type="text" placeholder="0000 0000 0000 0000">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                  <div class="input-group">
+                    <label>Expiry (MM/YY)</label>
+                    <input type="text" placeholder="MM/YY">
+                  </div>
+                  <div class="input-group">
+                    <label>CVV</label>
+                    <input type="text" placeholder="***">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right: Summary -->
+      <aside class="order-summary">
+        <div class="summary-card">
+          <h3 class="display-font" style="margin-bottom: 2rem;">Order Summary</h3>
+          
+          <div style="border-bottom: 1px solid var(--surface-container-low); margin-bottom: 2rem;">
+            <div class="cart-item" style="margin-bottom: 1.5rem;">
+              <img src="C:\Users\Lenovo\.gemini\antigravity\brain\88dbc95b-a03e-4cac-a253-ce840cc8c89f\aura_sound_pro_hero_1776420031570.png" class="cart-item-img" style="width: 60px; height: 60px;">
+              <div style="font-size: 12px;">
+                <p style="font-weight: 600;">Aura Sound Pro</p>
+                <p style="color: var(--outline);">₹24,990</p>
+              </div>
+            </div>
+            <div class="cart-item" style="margin-bottom: 1.5rem;">
+              <img src="C:\Users\Lenovo\.gemini\antigravity\brain\88dbc95b-a03e-4cac-a253-ce840cc8c89f\aura_smartwatch_pro_product_1776419589198.png" class="cart-item-img" style="width: 60px; height: 60px;">
+              <div style="font-size: 12px;">
+                <p style="font-weight: 600;">SyncWatch Pro</p>
+                <p style="color: var(--outline);">₹12,499</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 14px;">
+            <span style="color: var(--outline);">Subtotal</span>
+            <span>₹37,489</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 14px;">
+            <span style="color: var(--outline);">Shipping</span>
+            <span style="color: #10b981; font-weight: 600;">FREE</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-top: 2rem; border-top: 1px solid var(--outline-variant); padding-top: 1.5rem;">
+            <span class="display-font" style="font-size: 1.25rem;">Total</span>
+            <span class="display-font" style="font-size: 1.25rem; color: var(--primary);">₹37,489</span>
+          </div>
+
+          <button class="btn btn-primary" style="width: 100%; margin-top: 3rem; padding: 1.5rem; border-radius: 100px;">
+            Finish Payment &nbsp; →
+          </button>
+          
+          <div class="surface-low" style="margin-top: 2rem; padding: 1rem; border-radius: var(--radius-sm); font-size: 10px; color: var(--outline);">
+            We use a state-of-the-art AI verification layer to protect your transaction from fraud. All payments are 256-bit SSL encrypted.
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer style="padding: 4rem 0; background: var(--surface-container-low); border-top: 1px solid var(--outline-variant);">
+    <div class="container" style="text-align: center;">
+      <div class="display-font" style="font-size: 1.2rem; color: var(--on-surface); margin-bottom: 1rem;">ShopAI</div>
+      <div style="font-size: var(--body-sm); color: var(--outline);">© 2024 SHOPAI INTELLIGENCE. ALL RIGHTS RESERVED.</div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Payment Switch Logic
+    const options = document.querySelectorAll('.payment-option');
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        options.forEach(o => o.classList.remove('active'));
+        option.classList.add('active');
+        option.querySelector('input').checked = true;
+        
+        // Show card fields if card is selected
+        const cardFields = document.getElementById('cardFields');
+        if (option.innerText.includes('Card')) {
+          cardFields.style.display = 'block';
+        } else {
+          cardFields.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

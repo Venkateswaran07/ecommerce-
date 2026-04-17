@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopAI | Smart Living - Curated Electronics</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="cart-drawer.css">
+  <script src="products.js"></script>
+  <style>
+    .listing-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+    
+    .sidebar {
+      padding: var(--space-md);
+      background: var(--surface-container-low);
+      border-radius: var(--radius-md);
+      height: fit-content;
+    }
+
+    .filter-section {
+      margin-bottom: var(--space-lg);
+    }
+
+    .filter-title {
+      font-size: var(--body-md);
+      font-weight: 600;
+      color: var(--on-surface);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .filter-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: var(--space-md);
+      font-size: var(--body-md);
+      color: var(--outline);
+      cursor: pointer;
+    }
+
+    .filter-item input {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1px solid var(--outline-variant);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .product-card {
+      padding: var(--space-md);
+      border-radius: var(--radius-md);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--tertiary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: var(--radius-lg);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .price-tag {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--on-surface);
+    }
+
+    .cart-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--surface-container-low);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cart-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <nav class="glass" style="position: sticky; top: 0; z-index: 1000; padding: 1.5rem 0;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+      <a href="index.html" class="display-font" style="font-size: 1.5rem; text-decoration: none; color: var(--primary);">ShopAI</a>
+      <div style="display: flex; align-items: center; flex: 1; max-width: 600px; margin: 0 2rem; position: relative;">
+        <input type="text" placeholder="Search for intelligent products..." style="width: 100%; padding: 0.75rem 1.5rem; border-radius: var(--radius-lg); border: none; background: var(--surface-container-low); font-family: inherit;">
+      </div>
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <button class="btn btn-ai cart-toggle" style="padding: 8px 16px;">Ask AI</button>
+        <div class="cart-toggle" style="cursor: pointer; position: relative;">
+          <svg style="width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+          <span style="position: absolute; top: -8px; right: -8px; background: var(--primary); color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; display: flex; align-items: center; justify-content: center;">2</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="listing-layout">
+      <!-- Sidebar Filters -->
+      <aside class="sidebar">
+        <h3 class="display-font" style="font-size: 1rem; margin-bottom: 2rem;">Filters</h3>
+        
+        <div class="filter-section">
+          <div class="filter-title">Price</div>
+          <div style="height: 4px; background: var(--outline-variant); border-radius: 2px; position: relative;">
+            <div style="position: absolute; height: 4px; background: var(--primary); width: 60%; border-radius: 2px;"></div>
+            <div style="position: absolute; width: 16px; height: 16px; background: white; border: 2px solid var(--primary); border-radius: 50%; top: -6px; left: 0;"></div>
+            <div style="position: absolute; width: 16px; height: 16px; background: white; border: 2px solid var(--primary); border-radius: 50%; top: -6px; left: 60%;"></div>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-title">Category</div>
+          <div class="filter-item"><input type="checkbox" checked> Audio</div>
+          <div class="filter-item"><input type="checkbox"> Wearables</div>
+          <div class="filter-item"><input type="checkbox"> Smart Home</div>
+          <div class="filter-item"><input type="checkbox"> Photography</div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-title">AI Insights</div>
+          <div class="surface-lowest" style="padding: 1rem; border-radius: var(--radius-md); font-size: var(--body-sm); color: var(--tertiary);">
+            <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 0.5rem;">
+              <svg style="width: 14px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              Smart Refinement
+            </div>
+            Based on your interest in "focus" and "productivity," we're highlighting items with superior noise isolation.
+          </div>
+        </div>
+
+        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Apply Filters</button>
+      </aside>
+
+      <!-- Main Content -->
+      <section>
+        <header style="margin-bottom: 3rem;">
+          <h1 style="font-size: var(--display-md); margin-bottom: 0.5rem;">Smart Living</h1>
+          <p style="color: var(--outline); font-size: var(--body-md); max-width: 600px;">Curated electronics selected by AI based on your past preferences and current market trends.</p>
+        </header>
+
+        <div class="product-grid">
+          <!-- Card 1 -->
+          <div class="surface-lowest product-card" style="position: relative;">
+            <div class="product-badge">Top AI Pick</div>
+            <img src="C:\Users\Lenovo\.gemini\antigravity\brain\88dbc95b-a03e-4cac-a253-ce840cc8c89f\aura_smartwatch_pro_product_1776419589198.png" class="product-image">
+            <div style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 4px; font-size: var(--body-sm); color: #f59e0b;">
+              <svg style="width: 12px;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              4.9 <span style="color: var(--outline);">(128)</span>
+            </div>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;"><a href="details.html" style="text-decoration: none; color: inherit;">Aura Smartwatch Pro</a></h3>
+            <p style="font-size: var(--body-sm); color: var(--outline); margin-bottom: 1.5rem;">Advanced health tracking with predictive analytics.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="price-tag">₹12,499</div>
+              <div class="cart-btn">
+                <svg style="width: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="surface-lowest product-card">
+            <img src="C:\Users\Lenovo\.gemini\antigravity\brain\88dbc95b-a03e-4cac-a253-ce840cc8c89f\sonic_silence_q7_product_1776419604485.png" class="product-image">
+            <div style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 4px; font-size: var(--body-sm); color: #f59e0b;">
+              <svg style="width: 12px;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              4.7 <span style="color: var(--outline);">(84)</span>
+            </div>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Sonic Silence Q7</h3>
+            <p style="font-size: var(--body-sm); color: var(--outline); margin-bottom: 1.5rem;">Adaptive noise cancellation that learns your environment.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="price-tag">₹24,990</div>
+              <div class="cart-btn">
+                <svg style="width: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="surface-lowest product-card">
+            <img src="C:\Users\Lenovo\.gemini\antigravity\brain\88dbc95b-a03e-4cac-a253-ce840cc8c89f\echo_buds_v2_product_1776419622697.png" class="product-image">
+            <div style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 4px; font-size: var(--body-sm); color: #f59e0b;">
+              <svg style="width: 12px;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              4.5 <span style="color: var(--outline);">(210)</span>
+            </div>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Echo Buds V2</h3>
+            <p style="font-size: var(--body-sm); color: var(--outline); margin-bottom: 1.5rem;">Compact design with AI-enhanced voice isolation.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="price-tag">₹8,999</div>
+              <div class="cart-btn">
+                <svg style="width: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="surface-lowest product-card" style="position: relative;">
+            <div class="product-badge" style="background: var(--primary);">New Arrival</div>
+            <img src="C:\Users\Lenovo\.gemini\antigravity\brain\88dbc95b-a03e-4cac-a253-ce840cc8c89f\resonance_360_product_1776419647026.png" class="product-image">
+            <div style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 4px; font-size: var(--body-sm); color: #f59e0b;">
+              <svg style="width: 12px;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              4.8 <span style="color: var(--outline);">(56)</span>
+            </div>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Resonance 360</h3>
+            <p style="font-size: var(--body-sm); color: var(--outline); margin-bottom: 1.5rem;">Spatial audio speaker that maps the room for perfect sound.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="price-tag">₹15,200</div>
+              <div class="cart-btn cart-toggle">
+                <svg style="width: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer style="margin-top: 8rem; padding: 4rem 0; background: var(--surface-container-low); border-top: 1px solid var(--outline-variant);">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="display-font" style="font-size: 1.2rem; color: var(--on-surface);">ShopAI</div>
+        <div style="display: flex; gap: 2rem; font-size: var(--body-sm); color: var(--outline); font-weight: 500; text-transform: uppercase;">
+          <a href="#" style="text-decoration: none; color: inherit;">Privacy Policy</a>
+          <a href="#" style="text-decoration: none; color: inherit;">Terms of Service</a>
+          <a href="#" style="text-decoration: none; color: inherit;">AI Ethics</a>
+        </div>
+        <div style="font-size: var(--body-sm); color: var(--outline);">© 2024 SHOPAI INTELLIGENCE.</div>
+      </div>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
